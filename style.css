@@ -238,7 +238,7 @@ main {
 
 .projet-card {
   width: 100%;
-  height: 56dvh;
+  min-height: 56vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: var(--gap);
