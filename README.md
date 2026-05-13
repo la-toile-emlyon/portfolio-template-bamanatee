@@ -1,180 +1,171 @@
-# LaToile — Exercice HTML
+# LaToile — Exercice JS : fetch + DOM
 
-Le CSS est déjà écrit dans `style.css`. Votre mission : écrire le fichier `index.html` pour que le design s'affiche correctement.
-
-> Ouvrez la maquette Figma pour vous guider visuellement :
-> https://www.figma.com/design/T4TgalkGTYrvxpghmwTPUg/Portfolio
+Le HTML et le CSS sont déjà en place. La page est vide.  
+Votre mission : compléter `script.js` pour que tout le contenu de `data.json` peuple la page.
 
 ---
 
-## Structure globale de la page
+## Fichiers
 
-```
-<html>
-  <head>        → métadonnées, polices, lien CSS
-  <body>
-    <nav>       → barre de navigation
-    <header>    → section hero (titre principal)
-    <main>      → contenu principal
-      <section> → compétences
-      <section> → projets
-      <section> → parcours
-    <footer>    → pied de page
-```
+| Fichier | Rôle | À modifier ? |
+|---------|------|--------------|
+| `index.html` | Structure (vide) | ❌ |
+| `style.css`  | Mise en forme    | ❌ |
+| `data.json`  | Toutes les données du site | ❌ |
+| `script.js`  | Votre code JS    | ✅ |
 
 ---
 
-## 1. `<head>`
+## data.json — structure complète
 
-Le `<head>` doit contenir :
-- L'encodage UTF-8
-- La balise viewport pour le responsive
-- Le titre de la page : **Portfolio**
-- Les balises Google Fonts pour charger **Montserrat** (poids : 400, 500, 600, 700, 800)
-- Le lien vers `style.css`
+```json
+{
+  "logo": "logo",
 
----
+  "nav": [
+    { "label": "MES COMPÉTENCES", "href": "#competences" },
+    ...
+  ],
 
-## 2. Navigation `<nav class="navbar">`
+  "cta": { "label": "CONTACTEZ MOI ↗", "href": "#contact" },
 
-```
-nav.navbar
-├── a.logo              → texte "LOGO", lien vers "#"
-├── ul.nav-links
-│   ├── li > a          → "MES COMPÉTENCES ↗"  href="#competences"
-│   ├── li > a          → "MES PROJETS ↗"       href="#projets"
-│   └── li > a          → "MON PARCOURS ↗"      href="#parcours"
-└── a.btn-nav           → "CONTACTEZ MOI ↗"     href="#contact"
-```
+  "hero": {
+    "titre":     "Je donne",
+    "accent":    "vie",
+    "suite":     "à vos idées",
+    "sousTitre": "Je travaille avec vous..."
+  },
 
----
+  "competences": [
+    { "titre": "...", "description": "...", "tags": ["...", "..."] }
+  ],
 
-## 3. Hero `<header id="hero">`
+  "projets": [
+    { "titre": "...", "description": "...", "tags": [...],
+      "image": "assets/...", "lien": "#", "reverse": false }
+  ],
 
-```
-header#hero
-├── h1
-│   ├── texte : "Je donne "
-│   ├── em              → "vie"   ← balise italique Georgia
-│   ├── <br>
-│   └── texte : "à vos idées"
-└── p                   → "Je travail avec vous pour construire vos projet numériques"
-```
-
-> ⚠️ Le mot *vie* est dans une balise `<em>` — c'est ce qui lui applique la police Georgia en italique.
-
----
-
-## 4. Compétences `<section id="competences" class="competences">`
-
-La section contient **2 cartes** identiques en structure :
-
-```
-section#competences.competences
-├── div.competence-card
-│   ├── h3              → "UI/UX design"
-│   ├── p               → Lorem ipsum...
-│   └── div.tags
-│       ├── span.tag    → "UI/UX design"
-│       ├── span.tag    → "Identité graphique"
-│       ├── span.tag    → "prototypage"
-│       └── span.tag    → "design interactif"
-│
-└── div.competence-card
-    ├── h3              → "Intégrateur front end"
-    ├── p               → Lorem ipsum...
-    └── div.tags
-        ├── span.tag    → "Javascript"
-        ├── span.tag    → "HTML/CSS"
-        ├── span.tag    → "Python"
-        └── span.tag    → "Ruby"
+  "parcours": [
+    { "annee": "2024", "titre": "...", "lieu": "..." }
+  ]
+}
 ```
 
 ---
 
-## 5. Projets `<section id="projets" class="projets">`
+## Le pattern fetch — à comprendre avant de coder
 
-La section contient un titre `<h2>` puis **3 cartes projet** (`<article>`).
-
-### Structure d'une carte projet
-
-```
-article.projet-card
-├── div.projet-content
-│   ├── div.projet-top
-│   │   ├── h3          → nom du projet
-│   │   └── div.tags
-│   │       ├── span.tag → "Web design"
-│   │       └── span.tag → "Development"
-│   └── div.projet-bottom
-│       ├── p           → Lorem ipsum...
-│       └── a.btn-projet → "VOIR LE PROJET ↗"   href="#"
-└── div.projet-image
-    └── img             → src="assets/project-img.jpeg"
+```js
+fetch('data.json')              // charge le fichier
+  .then(function(reponse) {
+    return reponse.json();      // convertit en objet JS
+  })
+  .then(function(data) {
+    // ici data contient tout le JSON
+    // data.logo, data.nav, data.hero, data.projets...
+  });
 ```
 
-### Ordre des cartes
-
-| Carte | Classe | Image | Contenu | Nom |
-|-------|--------|-------|---------|-----|
-| Projet 1 | `projet-card` | droite | gauche | Album musique |
-| Projet 2 | `projet-card reverse` | **gauche** | droite | Sneakershop |
-| Projet 3 | `projet-card` | droite | gauche | Site vitrine |
-
-> ⚠️ Pour le **Projet 2** (`.reverse`), l'image doit être **avant** le contenu dans le HTML :
-> ```html
-> <article class="projet-card reverse">
->   <div class="projet-image">...</div>   ← image EN PREMIER
->   <div class="projet-content">...</div>
-> </article>
-> ```
+> ⚠️ Tout votre code doit être **à l'intérieur** du dernier `.then()`.  
+> C'est là que `data` existe.
 
 ---
 
-## 6. Parcours `<section id="parcours" class="parcours">`
+## Les étapes dans script.js
+
+### Étape 1 — `genererTags(tags)` *(tableau → HTML)*
+Reçoit un tableau de strings, retourne une chaîne de `<span class="tag">`.
 
 ```
-section#parcours.parcours
-├── h2                  → "Mon parcours"
-└── ul.parcours-liste
-    ├── li.parcours-item
-    │   ├── p.parcours-titre → "2022 - intitulé diplome / poste"
-    │   └── p.parcours-lieu  → "ENTREPRISES / ÉCOLE"
-    ├── li.parcours-item
-    │   └── ...
-    ├── li.parcours-item
-    │   └── ...
-    └── li.parcours-item
-        └── ...
+["HTML", "CSS"]  →  '<span class="tag">HTML</span><span class="tag">CSS</span>'
 ```
 
-> 4 items au total, même structure pour chacun.
+### Étape 2 — `genererLiens(liens)` *(tableau → HTML)*
+Reçoit le tableau `data.nav`, retourne une chaîne de `<li><a>`.
+
+```
+[{ label: "PROJETS", href: "#projets" }]
+→  '<li><a href="#projets">PROJETS ↗</a></li>'
+```
+
+### Étape 3 — Nav
+```js
+logoNav.textContent  = data.logo
+liensNav.innerHTML   = genererLiens(data.nav)
+ctaNav.textContent   = data.cta.label
+ctaNav.href          = data.cta.href
+```
+
+### Étape 4 — Hero
+Le `<h1>` contient une balise `<em>` → utiliser `innerHTML` :
+```js
+heroTitre.innerHTML     = `${data.hero.titre} <em>${data.hero.accent}</em><br>${data.hero.suite}`
+heroSousTitre.textContent = data.hero.sousTitre
+```
+
+### Étape 5 — Compétences
+`forEach` sur `data.competences` → `insertAdjacentHTML('beforeend', carte)`
+
+```html
+<div class="competence-card">
+  <h3>titre</h3>
+  <p>description</p>
+  <div class="tags"> genererTags(tags) </div>
+</div>
+```
+
+### Étape 6 — Projets
+`forEach` sur `data.projets` → toutes les cartes ont la **même structure**.
+
+> Le CSS s'occupe d'inverser automatiquement les cartes paires avec `:nth-of-type(even)`.  
+> Pas besoin de condition dans le JS !
+
+```html
+<article class="projet-card">
+  <div class="projet-content">
+    <div class="projet-top">
+      <h3>titre</h3>
+      <div class="tags"> genererTags(tags) </div>
+    </div>
+    <div class="projet-bottom">
+      <p>description</p>
+      <a href="lien" class="btn-projet">VOIR LE PROJET ↗</a>
+    </div>
+  </div>
+  <div class="projet-image">
+    <img src="image" alt="titre">
+  </div>
+</article>
+```
+
+### Étape 7 — Parcours
+`forEach` sur `data.parcours` → `insertAdjacentHTML('beforeend', item)`
+
+```html
+<li class="parcours-item">
+  <p class="parcours-titre">2024 - Titre</p>
+  <p class="parcours-lieu">Lieu</p>
+</li>
+```
+
+### Étape 8 — Footer
+Même logique que la nav (réutilisez `genererLiens`) :
+```js
+logoFooter.textContent = data.logo
+liensFooter.innerHTML  = genererLiens(data.nav)
+...
+```
 
 ---
 
-## 7. Footer `<footer class="navbar">`
+## Résultat attendu
 
-Même contenu que la `<nav>`, mais dans une balise `<footer>` :
+✅ Logo affiché dans nav et footer  
+✅ Liens de navigation générés  
+✅ Hero avec titre en italique  
+✅ 2 cartes compétences avec leurs tags  
+✅ 3 cartes projets (la 2e inversée)  
+✅ 4 items dans le parcours  
 
-```
-footer.navbar
-├── span.logo           → "LOGO"   (span, pas un <a> ici)
-├── ul.nav-links
-│   ├── li > a          → "MES COMPÉTENCES ↗"
-│   ├── li > a          → "MES PROJETS ↗"
-│   └── li > a          → "MON PARCOURS ↗"
-└── a.btn-nav           → "CONTACTEZ MOI ↗"
-```
-
----
-
-## Checklist finale
-
-- [ ] Le fichier s'appelle bien `index.html`
-- [ ] La police Montserrat est chargée depuis Google Fonts
-- [ ] `style.css` est bien lié dans le `<head>`
-- [ ] Le `<em>vie</em>` est présent dans le `<h1>`
-- [ ] La carte Projet 2 a la classe `reverse` et l'image est en premier dans le HTML
-- [ ] Les `id` de sections correspondent : `#competences`, `#projets`, `#parcours`
-- [ ] Le footer utilise `<footer class="navbar">` (pas une balise `<nav>`)
-- [ ] Le dossier `assets/` contient une image `project-img.jpeg`
+> Pour tester : modifiez `data.json` (changez le logo, ajoutez un projet...)  
+> La page doit se mettre à jour sans toucher au HTML ni au JS.

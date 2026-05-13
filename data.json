@@ -1,0 +1,65 @@
+{
+  "logo": "logo",
+
+  "nav": [
+    { "label": "MES COMPÉTENCES", "href": "#competences" },
+    { "label": "MES PROJETS",     "href": "#projets"     },
+    { "label": "MON PARCOURS",    "href": "#parcours"    }
+  ],
+
+  "cta": {
+    "label": "CONTACTEZ MOI ↗",
+    "href": "#contact"
+  },
+
+  "hero": {
+    "titre":     "Je donne",
+    "accent":    "vie",
+    "suite":     "à vos idées",
+    "sousTitre": "Je travaille avec vous pour construire vos projets numériques"
+  },
+
+  "competences": [
+    {
+      "titre": "UI/UX design",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
+      "tags": ["UI/UX design", "Identité graphique", "Prototypage", "Design interactif"]
+    },
+    {
+      "titre": "Intégrateur front end",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi.",
+      "tags": ["Javascript", "HTML/CSS", "Python", "Ruby"]
+    }
+  ],
+
+  "projets": [
+    {
+      "titre":       "Album musique",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+      "tags":        ["Web design", "Development"],
+      "image":       "assets/project-img.jpeg",
+      "lien":        "#"
+    },
+    {
+      "titre":       "Sneakershop",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+      "tags":        ["Web design", "Development"],
+      "image":       "assets/project-img.jpeg",
+      "lien":        "#"
+    },
+    {
+      "titre":       "Site vitrine",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+      "tags":        ["Web design", "Development"],
+      "image":       "assets/project-img.jpeg",
+      "lien":        "#"
+    }
+  ],
+
+  "parcours": [
+    { "annee": "2024", "titre": "Bachelor Développement Web",  "lieu": "LaToile / École"       },
+    { "annee": "2023", "titre": "Intégrateur front end",       "lieu": "Agence Studio / Entreprise" },
+    { "annee": "2022", "titre": "BTS Design Graphique",        "lieu": "Lycée Technique / École"    },
+    { "annee": "2021", "titre": "Stage UX Design",             "lieu": "StartupXYZ / Entreprise"    }
+  ]
+}
