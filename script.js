@@ -119,7 +119,7 @@ fetch('data.json')
     // TODO : forEach sur data.projets
     // Toutes les cartes ont la même structure — le CSS s'occupe
     // d'inverser automatiquement les cartes paires (:nth-of-type(even))
-    data.projects.forEach(projet => {
+    data.projets.forEach(projet => {
       let carte=`
       <article class="projet-card">
         <div class="projet-content">
@@ -136,7 +136,7 @@ fetch('data.json')
             <img src="${projet.image}" alt="${projet.titre}">
           </div>
       </article>`;
-      sectionProjets.insertAdjacentHTML("beforeend", carte)
+      sectionProjets.insertAdjacentHTML("beforeend", carte);
     });
     
     // <article class="projet-card">
@@ -172,11 +172,21 @@ fetch('data.json')
     //
     // → listeParcours.insertAdjacentHTML('beforeend', item)
 
-
+    data.parcours.forEach(element => {
+      let item=`
+      <li class="parcours-item">
+        <p class="parcours-titre">${element.annee} - ${element.titre}</p>
+       <p class="parcours-lieu">${element.lieu}</p>
+      </li>`;
+      listeParcours.insertAdjacentHTML('beforeend', item)
+    });
     // --------------------------------------------------
     //  FOOTER — même logique que la nav
     // --------------------------------------------------
-
+    logoFooter.textContent = data.logo;
+    liensFooter.innerHTML  = genererLiens(data.nav);
+    ctaFooter.textContent   = data.cta.label;
+    ctaFooter.href          = data.cta.href;
     // TODO : logoFooter.textContent  = ...
     // TODO : liensFooter.innerHTML   = genererLiens(...)
     // TODO : ctaFooter.textContent   = ...
