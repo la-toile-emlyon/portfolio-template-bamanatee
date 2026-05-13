@@ -59,7 +59,7 @@ fetch('data.json')
       // TODO : forEach sur liens → construire les <li><a href="...">...</a></li>
       
       liens.forEach(lien => {
-        html+=`<li><a href="${lien.href}.href">${lien.label}</a></li>`;
+        html+=`<li><a href="${lien.href}">${lien.label}</a></li>`;
       });
       return html;
     }
