@@ -38,28 +38,26 @@
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
       "tags":        ["Web design", "Development"],
       "image":       "assets/project-img.jpeg",
-      "lien":        "#"
+      "lien":        "https://bamanatee.github.io/album/"
     },
     {
       "titre":       "Sneakershop",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
       "tags":        ["Web design", "Development"],
       "image":       "assets/project-img.jpeg",
-      "lien":        "#"
+      "lien":        "https://la-toile-emlyon.github.io/css-sneakershop-bamanatee-1/"
     },
     {
       "titre":       "Site vitrine",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
       "tags":        ["Web design", "Development"],
       "image":       "assets/project-img.jpeg",
-      "lien":        "#"
+      "lien":        "https://la-toile-emlyon.github.io/html-css-evaluation-bamanatee/"
     }
   ],
 
   "parcours": [
-    { "annee": "2024", "titre": "Bachelor Développement Web",  "lieu": "LaToile / École"       },
-    { "annee": "2023", "titre": "Intégrateur front end",       "lieu": "Agence Studio / Entreprise" },
-    { "annee": "2022", "titre": "BTS Design Graphique",        "lieu": "Lycée Technique / École"    },
-    { "annee": "2021", "titre": "Stage UX Design",             "lieu": "StartupXYZ / Entreprise"    }
+    { "annee": "2026", "titre": "Bachelor Développement Web",  "lieu": "LaToile / École"},
+    { "annee": "2021", "titre": "Baccalauréat Général EDS Mathématiques & Physique-Chimie", "lieu": "StartupXYZ / Entreprise"}
   ]
 }
