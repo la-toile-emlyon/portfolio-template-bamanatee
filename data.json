@@ -53,6 +53,13 @@
       "tags":        ["Web design", "Development"],
       "image":       "assets/project-img.jpeg",
       "lien":        "https://la-toile-emlyon.github.io/html-css-evaluation-bamanatee/"
+    },
+    {
+      "titre":       "Webmag",
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla.",
+      "tags":        ["Web design", "Development"],
+      "image":       "assets/project-img.jpeg",
+      "lien":        "https://la-toile-emlyon.github.io/js-webmag-bamanatee/"
     }
   ],
 

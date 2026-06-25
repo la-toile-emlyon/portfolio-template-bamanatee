@@ -129,7 +129,7 @@ fetch('data.json')
           </div>
           <div class="projet-bottom">
             <p>${projet.description}</p>
-            <a href="${projet.lien}" class="btn-projet">VOIR LE PROJET ↗</a>
+            <a href="${projet.lien}" class="btn-projet" target="_blank">VOIR LE PROJET ↗</a>
           </div>
         </div>
           <div class="projet-image">
